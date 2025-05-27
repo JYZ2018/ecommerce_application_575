@@ -1,38 +1,242 @@
-.App {
+/* Global Styles */
+* {
+  font-family: Monaco;
+  margin: 0;
+  padding: 0;
+  background-color: #9e9c8e;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Header */
+header {
+  background-color: #9e9c8e;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 50vh;
+}
+
+#logo {
+  width: auto;
+  height: 46vh;
+}
+
+/* Navigation */
+.nav-container {
+  list-style-type: none;
+  background-color: darkcyan;
+  display: flex;
+  justify-content: stretch;
+  flex-flow: row wrap; 
+  margin-bottom: 20px;
+}
+
+.nav-container li {
+  padding: 25px;
+  margin: 0px 100px;
+  background-color: darkcyan;
+}
+
+.nav-container li a {
+  display: inline-block;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: cursive;
+  text-decoration: none;
+  color: white;
+  background-color: darkcyan;
+}
+
+.nav-container li a:hover {
+  color: #f39c12;
+}
+
+/* Main */
+main {
+  padding: 20px;
+}
+
+/* Promo Banner */
+.banner {
+  width: 100%;
+  display: grid;
+  margin-bottom: 20px;
+  position: relative;
+  min-height: 40vh;
+}
+
+.banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  z-index: 1;
+}
+
+.banner-title {
+  padding-top: 1.5rem;
+  padding-left: 2rem;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  background-color: transparent;
+  font-family: cursive;
+  color: orange;
+  text-shadow: .3rem .3rem .4rem #286587;
+  z-index: 2;
+}
+
+.banner-content {
+  position: relative;
+  background-color: transparent;
+  z-index: 2;
+}
+
+.strong-yellow {
+  color: white;
+  font-size: 1.8rem;
+  background-color: transparent;
+  font-family: cursive;
+}
+
+.banner-text {
+  --delay: 0s;
+  position: absolute;
+  padding-left: 2rem;
+  font-size: clamp(1.6rem, 1.3vw, 2rem);
+  font-weight: 600;
+  background-color: transparent;
+  color: white;
+  font-family: cursive;
+  animation: appear 5s infinite both;
+}
+
+.banner-text:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.banner-text:nth-child(2) {
+  animation-delay: 2s;
+}
+
+/* Columns */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+}
+
+.column {
+  border: 6px solid orange;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 20px;
+  background-color: orange;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.column h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: cursive;
+  color: black;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  background-color: orange;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.column p {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-family: cursive;
+  color: black;
+  background-color: orange;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.columns img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer */
+footer {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.footer-left {
+  flex: 1;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-left: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.footer-right {
+  flex: 1;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.footer-left img {
+  width: 8%;
+  height: auto; 
+  margin-right: 6vh;
+  display: flex;
+  align-items: center;
+}
+
+.footer-right p {
+  margin: 0;
+  font-family: cursive;
+  font-size: 1.2rem;
+  color: darkcyan;
+}
+
+/* Animations */
+@keyframes slide-bottom {
+  0% { 
+      transform: translateY(0);
+      opacity: 1; 
   }
-  to {
-    transform: rotate(360deg);
+  100% {
+      transform: translateY(3rem);
+      opacity: 0;
+  }
+}
+
+@keyframes appear {
+  0% {
+      transform: translateY(-2rem);
+      opacity: 0;
+  }
+  30% {
+      transform: translateY(0rem);
+      opacity: 0;
+  }
+  60%, 80% {
+      transform: translateY(-2rem);
+      opacity: 1;
+  }
+  90%, 100% {
+      opacity: 0;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .columns {
+      grid-template-columns: 1fr;
   }
 }
